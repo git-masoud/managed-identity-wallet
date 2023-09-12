@@ -55,7 +55,7 @@ services:
       - start-dev
       - --import-realm
     volumes:
-      - ./keycloak/miw_test_realm_$DEV_ENVIRONMENT.json:/opt/keycloak/data/import/miw_test_realm.json
+      - ./keycloak/myrealm.json:/opt/keycloak/data/import/miw_test_realm.json
     ports:
       - "8080:8080"
     depends_on:
