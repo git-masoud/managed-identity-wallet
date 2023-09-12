@@ -24,19 +24,20 @@ version: '3'
 services:
   miw:
     image: local-miw:latest
-    container_name: miw
+    container_name: miw2
     env_file:
       - ../env-files/env.$DEV_ENVIRONMENT
     ports:
-      - "7000:8000"
+      - "7001:8000"
       - "7090:8090"
     networks:
       - miw2-net
 
-  postgres:
+  postgres2:
     image: postgres:15.3-alpine3.18
+    container_name: postgres2
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - postgres2_data:/var/lib/postgresql/data
       - ./postgres/db.sh:/docker-entrypoint-initdb.d/init-database.sh
     env_file:
       - ../env-files/env.$DEV_ENVIRONMENT
@@ -47,6 +48,7 @@ services:
 
   keycloak:
     image: quay.io/keycloak/keycloak:21.1
+    container_name: keycloak2
     env_file:
       - ../env-files/env.$DEV_ENVIRONMENT
     environment:
@@ -57,14 +59,14 @@ services:
     volumes:
       - ./keycloak/myrealm.json:/opt/keycloak/data/import/miw_test_realm.json
     ports:
-      - "7080:8080"
+      - "7080:7080"
     depends_on:
       - postgres
     networks:
       - miw2-net
 
 volumes:
-  postgres_data:
+  postgres2_data:
     driver: local
 
 networks:

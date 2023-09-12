@@ -28,7 +28,7 @@ tasks:
 
   start-middleware:
     desc: Spin up local Docker environment
-    dir: dev-assets/docker-environment
+    dir: dev-assets/docker-environment2
     ignore_error: true
     vars:
       OPTIONS: '{{ default "" .OPTIONS }}'
@@ -40,10 +40,10 @@ tasks:
 
   stop-middleware:
     desc: Stop local Docker environment
-    dir: dev-assets/docker-environment
+    dir: dev-assets/docker-environment2
     cmds:
       - docker compose down
-      - cmd: docker volume remove docker-environment_postgres_data
+      - cmd: docker volume remove docker-environment2_postgres_data
         ignore_error: true
       - rm -f postgres/db.sh
 
@@ -55,18 +55,6 @@ tasks:
           OPTIONS: "-d"
       - task: build
       - cmd: docker rm miw-app
-        ignore_error: true
-      - task: start-middleware
-        vars:
-          CONTAINERS: "miw"
-  start-app2:
-    desc: Run the ap2p in a container environment (including middleware aka Postgresql and Keycloak)
-    cmds:
-      - task: start-middleware
-        vars:
-          OPTIONS: "-d"
-      - task: build
-      - cmd: docker rm miw2-app
         ignore_error: true
       - task: start-middleware
         vars:

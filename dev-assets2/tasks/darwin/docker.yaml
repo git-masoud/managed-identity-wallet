@@ -28,7 +28,7 @@ tasks:
 
   start-middleware:
     desc: Spin up local Docker environment
-    dir: dev-assets/docker-environment
+    dir: dev-assets2/docker-environment2
     ignore_error: true
     vars:
       OPTIONS: '{{ default "" .OPTIONS }}'
@@ -39,11 +39,11 @@ tasks:
       - "docker compose up {{.OPTIONS}} {{.CONTAINERS}}"
 
   stop-middleware:
-    desc: Stop local Docker environment
-    dir: dev-assets/docker-environment
+    desc: Stop local Docker environment2
+    dir: dev-assets2/docker-environment2
     cmds:
       - docker compose down
-      - cmd: docker volume remove docker-environment_postgres_data
+      - cmd: docker volume remove postgres2_data
         ignore_error: true
       - rm -f postgres/db.sh
 

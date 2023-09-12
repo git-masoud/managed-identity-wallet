@@ -31,6 +31,8 @@ includes:
     internal: true
   docker:
     taskfile: dev-assets/tasks/{{OS}}/docker.yaml
+  docker2:
+    taskfile: dev-assets2/tasks/{{OS}}/docker.yaml
   helm:
     taskfile: dev-assets/tasks/helm.yaml
   app:

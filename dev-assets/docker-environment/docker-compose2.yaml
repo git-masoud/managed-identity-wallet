@@ -28,7 +28,7 @@ services:
     env_file:
       - ../env-files/env.$DEV_ENVIRONMENT
     ports:
-      - "7000:8000"
+      - "7100:8000"
       - "7090:8090"
     networks:
       - miw2-net
