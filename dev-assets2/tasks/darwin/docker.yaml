@@ -43,7 +43,7 @@ tasks:
     dir: dev-assets2/docker-environment2
     cmds:
       - docker compose down
-      - cmd: docker volume remove postgres2_data
+      - cmd: docker volume remove docker-environment2_postgres_data
         ignore_error: true
       - rm -f postgres/db.sh
 
@@ -63,7 +63,7 @@ tasks:
   stop-app:
     desc: Stop all running containers
     cmds:
-      - cmd: docker stop miw
+      - cmd: docker stop miw2
         ignore_error: true
       - task: stop-middleware
 
